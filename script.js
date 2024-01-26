@@ -39,22 +39,61 @@ window.addEventListener("touchmove", e => {
 const  p = {x:0,y:0}
 
 const params = {
-    spring : .2,
-    pointNumber : 30
+    spring : .4,
+    pointsNumber : 30,
+    friction : 0.5,
+}
+const trail = new Array (params.pointsNumber);
+for (let i=0 ; i < params.pointsNumber ; i++){
+    trail[i] = {
+        x : pointer.x,
+        y : pointer.y,
+        dx : 0,
+        dy : 0,
+    }
+};
+
+
+
+function update(t){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    trail.forEach((p, pIdx) => {
+        const prev = pIdx === 0 ? pointer : trail[pIdx - 1];
+        const spring = pIdx === 0 ? 0.4 * params.spring : params.spring;
+
+            
+        p.dx += (prev.x - p.x) * spring;
+        p.dy += (prev.y - p.y) * spring;
+        p.dx *= params.friction;
+        p.dy *= params.friction;
+        p.x += p.dx;
+        p.y += p.dy ;
+
+        // ctx.beginPath();
+        // ctx.arc(p.x, p.y, 5, 0, 2 * Math.PI);
+        // ctx.fill();
+
+        if(pIdx == 0){
+            ctx.beginPath();
+            ctx.moveTo(p.x,p.y);
+        } else {
+            ctx.lineTo(p.x,p.y);
+        }
+
+    });
+    ctx.stroke();
+    window.requestAnimationFrame(update);
 }
 
-function update(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    // p.x = pointer.x ;
-    // p.y = pointer.y ;
-    
-    p.x += (pointer.x - p.x) * params.spring;
-    p.y += (pointer.y - p.y) * params.spring;
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,5 , 0 , 2* Math.PI);
-    ctx.fill();
-    window.requestAnimationFrame(update)
-}
+
+
+
+
+
+
+
+
 
 update(0);
 
