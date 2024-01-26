@@ -37,14 +37,25 @@ window.addEventListener("touchmove", e => {
 
 
 const  p = {x:0,y:0}
+
+const params = {
+    spring : .2,
+    pointNumber : 30
+}
+
 function update(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    p.x = pointer.x ;
-    p.y = pointer.y ;
+    // p.x = pointer.x ;
+    // p.y = pointer.y ;
+    
+    p.x += (pointer.x - p.x) * params.spring;
+    p.y += (pointer.y - p.y) * params.spring;
     ctx.beginPath();
     ctx.arc(p.x,p.y,5 , 0 , 2* Math.PI);
     ctx.fill();
     window.requestAnimationFrame(update)
 }
 
-update();
+update(0);
+
+
