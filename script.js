@@ -42,6 +42,7 @@ const params = {
     spring : .4,
     pointsNumber : 30,
     friction : 0.5,
+    baseWidth : 0.9
 }
 const trail = new Array (params.pointsNumber);
 for (let i=0 ; i < params.pointsNumber ; i++){
@@ -77,11 +78,19 @@ function update(t){
         if(pIdx == 0){
             ctx.beginPath();
             ctx.moveTo(p.x,p.y);
-        } else {
-            ctx.lineTo(p.x,p.y);
+        // } else {
+        //     ctx.lineTo(p.x,p.y);
         }
 
     });
+
+for (let i = 1; i < trail.length - 1; i++) {
+    const xc = .5 * (trail[i].x + trail[i + 1].x);
+    const yc = .5 * (trail[i].y + trail[i + 1].y);
+    ctx.quadraticCurveTo(trail[i].x, trail[i].y, xc, yc);
+    ctx.lineWidth = params.baseWidth * (params.pointsNumber - i);
+    ctx.stroke();
+}
     ctx.stroke();
     window.requestAnimationFrame(update);
 }
