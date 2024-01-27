@@ -1,5 +1,51 @@
+body {
+    margin: 0;
+    overflow: hidden; /* Hide scroll bars */
+    background-color: #1f1f1f; /* Dark background color */
+    font-family: 'Arial', sans-serif; /* Use a clean font */
+}
+
+header {
+    padding: 20px;
+    text-align: center;
+    background-color: #333; /* Header background color */
+}
+
+h1 {
+    color: #fff; /* Header text color */
+    margin: 0;
+}
+
 canvas {
+    display: block;
+    background-color: transparent; /* Make canvas transparent */
+    border: 10px solid gray;
+    margin: auto;
+}
+
+.widgets {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+button {
+    background-color: #4CAF50; /* Green button color */
+    color: #fff; /* Button text color */
+    border: none;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#message-box {
+    background-color: #fff; /* White background for the message box */
+    color: #333; /* Message text color */
+    padding: 10px;
+    border-radius: 5px;
+    display: none; /* Initially hide the message box */
 }
