@@ -1,23 +1,47 @@
+:root {
+    /* Shared colors */
+    --background-dark: #0F1035;
+    --box-shadow: rgba(0, 0, 0, 0.3);
+    --button-text: #fff;
+    --button-hover-bg-dark: #060722;
+    --message-text: #333;
+
+    /* Dark theme */
+    --header-bg-dark: #365486;
+    --header-text-dark: #DCF2F1;
+    --canvas-bg-start-dark: #365486;
+    --canvas-bg-end-dark: #7FC7D9;
+    --button-bg-dark: #0F1035;
+    --message-bg-dark: #FFF;
+
+    /* Light theme */
+    --background-light: #F9EFDB;
+    --text-light: #333;
+    --button-bg-light: #c1d3be;
+    --button-hover-bg-light: #a9c5a5;
+    --header-bg-light: #EBD9B4;
+    --canvas-bg-start-light: #9DBC98;
+    --canvas-bg-end-light: #EBD9B4;
+}
+
 /* Dark Theme */
 body {
     margin: 0;
     overflow: hidden;
-    background-color: #0F1035;
+    background-color: var(--background-dark);
     font-family: 'Arial', sans-serif;
-}
-*{
     transition: background-color 0.3s ease;
-
 }
+
 header {
     padding: 20px;
     text-align: center;
-    background-color: #365486;
+    background-color: var(--header-bg-dark);
     position: relative;
 }
 
 h1 {
-    color: #DCF2F1;
+    color: var(--header-text-dark);
     margin: 0;
 }
 
@@ -28,23 +52,14 @@ canvas {
     margin: auto;
     margin-top: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(45deg, #365486, #7FC7D9);
-}
-
-.widgets {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    box-shadow: 0 0 20px var(--box-shadow);
+    background: linear-gradient(45deg, var(--canvas-bg-start-dark), var(--canvas-bg-end-dark));
 }
 
 button {
-    background-color: #0F1035;
+    background-color: var(--button-bg-dark);
     border-radius: 10px;
-    color: #fff;
+    color: var(--button-text);
     border: none;
     padding: 10px 15px;
     margin-bottom: 10px;
@@ -58,9 +73,9 @@ button {
 }
 
 button:hover {
-    background-color: #060722;
+    background-color: var(--button-hover-bg-dark);
     border-radius: 10px;
-    color: #fff;
+    color: var(--button-text);
     border: none;
     padding: 10px 15px;
     margin-bottom: 10px;
@@ -69,37 +84,38 @@ button:hover {
 }
 
 #message-box {
-    background-color: #FFF;
-    color: #333;
+    background-color: var(--message-bg-dark);
+    color: var(--message-text);
     padding: 10px;
     border-radius: 5px;
     display: none;
 }
 
-
 /* Light Theme */
 body.light-theme {
-    background-color: #F9EFDB;
-    color: #333;
+    background-color: var(--background-light);
+    color: var(--text-light);
 }
-body.light-theme *{
-    color: #333; 
+
+body.light-theme * {
+    color: var(--text-light);
 }
 
 body.light-theme button {
-    background-color: #c1d3be; 
-    color: #333; 
+    background-color: var(--button-bg-light);
+    color: var(--text-light);
     border: none;
 }
+
 body.light-theme button#toggle-theme:hover {
-    background-color: #a9c5a5; 
+    background-color: var(--button-hover-bg-light);
 }
 
 header.light-theme {
-    background-color: #EBD9B4;
+    background-color: var(--header-bg-light);
 }
 
 canvas.light-theme {
-    background: linear-gradient(45deg, #9DBC98, #EBD9B4);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(45deg, var(--canvas-bg-start-light), var(--canvas-bg-end-light));
+    box-shadow: 0 0 20px var(--box-shadow);
 }
