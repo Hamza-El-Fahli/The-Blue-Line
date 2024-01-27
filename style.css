@@ -1,26 +1,35 @@
+/* Dark Theme */
 body {
     margin: 0;
-    overflow: hidden; /* Hide scroll bars */
-    background-color: #1f1f1f; /* Dark background color */
-    font-family: 'Arial', sans-serif; /* Use a clean font */
+    overflow: hidden;
+    background-color: #0F1035;
+    font-family: 'Arial', sans-serif;
 }
+*{
+    transition: background-color 0.3s ease;
 
+}
 header {
     padding: 20px;
     text-align: center;
-    background-color: #333; /* Header background color */
+    background-color: #365486;
+    position: relative;
 }
 
 h1 {
-    color: #fff; /* Header text color */
+    color: #DCF2F1;
     margin: 0;
 }
 
 canvas {
     display: block;
-    background-color: transparent; /* Make canvas transparent */
-    border: 10px solid gray;
+    background-color: transparent;
+    border: none;
     margin: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(45deg, #365486, #7FC7D9);
 }
 
 .widgets {
@@ -33,8 +42,25 @@ canvas {
 }
 
 button {
-    background-color: #4CAF50; /* Green button color */
-    color: #fff; /* Button text color */
+    background-color: #0F1035;
+    border-radius: 10px;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #060722;
+    border-radius: 10px;
+    color: #fff;
     border: none;
     padding: 10px 15px;
     margin-bottom: 10px;
@@ -43,9 +69,37 @@ button {
 }
 
 #message-box {
-    background-color: #fff; /* White background for the message box */
-    color: #333; /* Message text color */
+    background-color: #FFF;
+    color: #333;
     padding: 10px;
     border-radius: 5px;
-    display: none; /* Initially hide the message box */
+    display: none;
+}
+
+
+/* Light Theme */
+body.light-theme {
+    background-color: #F9EFDB;
+    color: #333;
+}
+body.light-theme *{
+    color: #333; 
+}
+
+body.light-theme button {
+    background-color: #c1d3be; 
+    color: #333; 
+    border: none;
+}
+body.light-theme button#toggle-theme:hover {
+    background-color: #a9c5a5; 
+}
+
+header.light-theme {
+    background-color: #EBD9B4;
+}
+
+canvas.light-theme {
+    background: linear-gradient(45deg, #9DBC98, #EBD9B4);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }

@@ -76,21 +76,45 @@ function update(t){
         const yc = 0.5 * (trail[i].y + trail[i + 1].y);
         ctx.quadraticCurveTo(trail[i].x, trail[i].y, xc, yc);
         ctx.lineWidth = params.baseWidth * (params.pointsNumber - i);
-        ctx.strokeStyle = `rgba(0, 0, 255, ${i/(trail.length - 1)})`; // Blue color with varying alpha
-
-        // Add shadow effect
-        ctx.shadowColor = `rgba(0, 0, 255, ${i/(trail.length - 1)})`; // Shadow color
-        ctx.shadowBlur = 10; // Blur radius
-
+        ctx.strokeStyle = `rgba(0, 0, 255, ${i/(trail.length - 1)})`; 
+        ctx.shadowColor = `rgba(0, 0, 255, ${i/(trail.length - 1)})`; 
+        ctx.shadowBlur = 10;
         ctx.stroke();
-
-        // Reset shadow properties
         ctx.shadowColor = 'transparent';
         ctx.shadowBlur = 0;
     }
-
     window.requestAnimationFrame(update);
 }
-
-// Initial call to start the animation
 update(0);
+document.getElementById('toggle-theme').innerHTML = "Dark";
+document.addEventListener('DOMContentLoaded', function () {
+    const body = document.body;
+    const header = document.querySelector('header');
+    const canvas = document.querySelector('canvas');
+    const toggleButton = document.getElementById('toggle-theme');
+    let isDarkTheme = true;
+    function toggleTheme() {
+        isDarkTheme = !isDarkTheme;
+
+        if (isDarkTheme) {
+            body.classList.remove('light-theme');
+            header.classList.remove('light-theme');
+            canvas.classList.remove('light-theme');
+            body.classList.add('dark-theme');
+            header.classList.add('dark-theme');
+            canvas.classList.add('dark-theme');
+            toggleButton.innerHTML = "Dark";
+
+        } else {
+            body.classList.remove('dark-theme');
+            header.classList.remove('dark-theme');
+            canvas.classList.remove('dark-theme');
+            body.classList.add('light-theme');
+            header.classList.add('light-theme');
+            canvas.classList.add('light-theme');
+            toggleButton.innerHTML = "Light";
+
+        }
+    }
+    toggleButton.addEventListener('click', toggleTheme);
+});
