@@ -93,14 +93,28 @@ document.addEventListener('DOMContentLoaded', function () {
     const canvas = document.querySelector('canvas');
     const toggleButton = document.getElementById('toggle-theme');
     let isDarkTheme = true;
-
     function toggleTheme() {
         isDarkTheme = !isDarkTheme;
-        const themeClass = isDarkTheme ? 'dark-theme' : 'light-theme';
 
-        [body, header, canvas].forEach(element => element.classList.toggle(themeClass));
-        toggleButton.innerHTML = isDarkTheme ? "Dark" : "Light";
+        if (isDarkTheme) {
+            body.classList.remove('light-theme');
+            header.classList.remove('light-theme');
+            canvas.classList.remove('light-theme');
+            body.classList.add('dark-theme');
+            header.classList.add('dark-theme');
+            canvas.classList.add('dark-theme');
+            toggleButton.innerHTML = "Dark";
+
+        } else {
+            body.classList.remove('dark-theme');
+            header.classList.remove('dark-theme');
+            canvas.classList.remove('dark-theme');
+            body.classList.add('light-theme');
+            header.classList.add('light-theme');
+            canvas.classList.add('light-theme');
+            toggleButton.innerHTML = "Light";
+
+        }
     }
-
     toggleButton.addEventListener('click', toggleTheme);
 });
